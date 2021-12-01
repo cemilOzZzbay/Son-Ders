@@ -159,8 +159,42 @@ namespace StringDateTime8523
             
             bool sonuc2 = metin.Contains("Akşamlar");   // .Contains metodu ile False yazdırır 
             Console.WriteLine(sonuc2);                  // Çünkü büyük küçük harf duyarlılığından.
+
+            // escape sequences
+            string name = "Çağıl";
+            string escapedName = "\"Çağıl\"";
+            Console.WriteLine(escapedName);
+
+            string surname = "Alsaç";
+            escapedName = name + "\n" + surname;
+            Console.WriteLine(escapedName);
             
+            escapedName=name+"\t" + surname;
+            Console.WriteLine(escapedName);
+
+            string path1 = "D:\\yzl8523\\Console";
+            Console.WriteLine(path1);
+            path1 = @"D:\yzl8523\Console";
+            Console.WriteLine(path1);
+
+
+
+            DateTime simdi = DateTime.Now;
+            Console.WriteLine(simdi);
+            
+            Console.WriteLine(simdi.ToShortDateString());
+            Console.WriteLine(simdi.ToLongDateString());
+            Console.WriteLine(simdi.ToShortTimeString());
+            Console.WriteLine(simdi.ToLongTimeString());
+
+            Console.WriteLine(simdi.ToShortDateString()+" "+simdi.ToLongTimeString());
+            Console.WriteLine(simdi.Month+"/"+simdi.Day+"/"+simdi.Year+" "+simdi.Hour+":"+simdi.Minute+":"+simdi.Second+":"+simdi.Minute+":"+simdi.Millisecond);
+
+            DateTime tarih = new DateTime(2020, 11, 28, 19, 17, 0); // 28.11.2020 19:17:00 yazdırır.
+            Console.WriteLine(tarih);
+
             Console.ReadLine();
+     
         }
     }
 }

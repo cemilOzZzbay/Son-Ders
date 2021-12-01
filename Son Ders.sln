@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Son Ders", "Son Ders\Son Ders.csproj", "{938F241D-92B1-40FD-B38C-C836CFAAFE48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringDateTime8523", "StringDateTime8523\StringDateTime8523.csproj", "{93A9C77F-D55A-4C60-AB26-8F4209FE3C93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringDateTimeMath8523", "StringDateTime8523\StringDateTimeMath8523.csproj", "{93A9C77F-D55A-4C60-AB26-8F4209FE3C93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
