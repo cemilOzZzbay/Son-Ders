@@ -230,7 +230,7 @@ namespace StringDateTime8523
             Console.WriteLine(string.Compare(buyuk,kucuk,true));   // Büyük harf küçük harften sayısal değer olarak büyüktür ama 3. parametre olarak true belirtirsek
                                                                    // büyük küçük harf ayrımı yapmaz 0 yazdırır
             Console.WriteLine(string.Compare(buyuk,0,kucuk,0,5));  // buyuk içindeki değeri küçük içindeki değer ile 0.indexten başlar kontrol eder 5. harf buyuk 
-                                                                   // olduğundan 0 yazdırır
+                                                                   // olduğundan 1 yazdırır
 
             if (tarih > tarih1)
                 Console.WriteLine("tarih2 > tarih1");
