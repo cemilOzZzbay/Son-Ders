@@ -189,7 +189,7 @@ namespace StringDateTime8523
             Console.WriteLine(simdi.ToShortDateString()+" "+simdi.ToLongTimeString());
             Console.WriteLine(simdi.Month+"/"+simdi.Day+"/"+simdi.Year+" "+simdi.Hour+":"+simdi.Minute+":"+simdi.Second+":"+simdi.Minute+":"+simdi.Millisecond);
 
-            DateTime tarih = new DateTime(2020, 11, 28, 19, 17, 0); // (Yıl,Ay,Gün,Saat-Saat,Dakika,Saniye)28.11.2020 19:17:00 yazdırır.
+            DateTime tarih = new DateTime(2020, 11, 28, 19, 17, 0); // (Yıl,Ay,Gün,Saat,Dakika,Saniye)28.11.2020 19:17:00 yazdırır.
             Console.WriteLine(tarih);
 
 
