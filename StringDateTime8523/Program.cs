@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace StringDateTime8523
 {
@@ -92,7 +89,7 @@ namespace StringDateTime8523
             Console.WriteLine(subSentence2);                  // parametre kullanılarak {12}. index ten başlar ve sentence değişkenindeki 
                                                               // değerin hepsini yazdırır. yani "My name is Leo Alcaç" yazdırır.
 
-            string subSentence3 = sentence.Substring(23, 9);   // .Substring metotudunun burdaki kullanımı sentence.Substring(23,19)
+            string subSentence3 = sentence.Substring(23, 9);   // .Substring metotudunun burdaki kullanımı sentence.Substring(23,9)
             Console.WriteLine(subSentence3);                  // kullanılarak {23}. index ten başlayıp 9 eleman sayılık "Leo Alsaç" ifadesini yazdırı
 
 
@@ -178,9 +175,11 @@ namespace StringDateTime8523
             Console.WriteLine(path1);
 
 
-
+            
             DateTime simdi = DateTime.Now;
             Console.WriteLine(simdi);
+            DateTime simdiUTC = DateTime.UtcNow;
+            Console.WriteLine(simdiUTC);
             
             Console.WriteLine(simdi.ToShortDateString());
             Console.WriteLine(simdi.ToLongDateString());
@@ -190,11 +189,97 @@ namespace StringDateTime8523
             Console.WriteLine(simdi.ToShortDateString()+" "+simdi.ToLongTimeString());
             Console.WriteLine(simdi.Month+"/"+simdi.Day+"/"+simdi.Year+" "+simdi.Hour+":"+simdi.Minute+":"+simdi.Second+":"+simdi.Minute+":"+simdi.Millisecond);
 
-            DateTime tarih = new DateTime(2020, 11, 28, 19, 17, 0); // 28.11.2020 19:17:00 yazdırır.
+            DateTime tarih = new DateTime(2020, 11, 28, 19, 17, 0); // (Yıl,Ay,Gün,Saat-Saat,Dakika,Saniye)28.11.2020 19:17:00 yazdırır.
             Console.WriteLine(tarih);
 
+
+            tarih = DateTime.Parse("04.12.2021", new CultureInfo("en")); //en (12.04.2021)
+            Console.WriteLine(tarih);
+            tarih = DateTime.Parse("04/13/2021 16:01:25", new CultureInfo("en")); // (4/13/2021 4:01:25 PM)
+            string tarihText = tarih.ToString(new CultureInfo("en"));
+            Console.WriteLine(tarihText);
+            tarihText = tarih.ToString("yyyy-MM-dd HH:mm:ss"); // (2021-04-13 16:01:25)
+            Console.WriteLine(tarihText);
+
+            simdi = DateTime.Now;
+            Console.WriteLine("Yarın:"+simdi.AddDays(1));
+            Console.WriteLine("1 hafta öncesi:"+simdi.AddDays(-7));
+            Console.WriteLine("6 ay sonrası:"+simdi.AddMonths(6).ToShortDateString());
+            Console.WriteLine("2 sene sonrası:"+simdi.AddYears(2).ToLongDateString());
+            Console.WriteLine("12 saat sonrası:"+simdi.AddHours(12));
+            Console.WriteLine("Yarım saat öncesi:"+simdi.AddMinutes(-30));
+
+            var tarih1 = DateTime.Parse("01.10.2020");
+            var tarih2 = DateTime.Parse("20.10.2020");
+            if (tarih2.CompareTo(tarih1) > 0)
+                Console.WriteLine("tarih2 > tarih1");
+            else if (tarih2.CompareTo(tarih1) < 0)
+                Console.WriteLine("tarih2 < tarih1");
+            else if(tarih2.CompareTo(tarih1) == 0)
+                Console.WriteLine("tarih2 = tarih");
+            
+            var harf1 = "A";
+            var harf2 = "B";
+            var kelime1 = "insan";
+            var kelime2 = "insan";
+            var buyuk = "insaN";
+            var kucuk = "insan";
+            Console.WriteLine(string.Compare(harf1,harf2));        // string.Compare metodu karakterleri sayısal değerlerine göre karşılaştırır (A>B)= -1
+            Console.WriteLine(string.Compare(harf2,harf1));        // string.Compare metodu karakterleri sayısal değerlerine göre karşılaştırır (B>A)= 1 
+            Console.WriteLine(string.Compare(kelime1,kelime2));    // string.Compare metodu karakterleri sayısal değerlerine göre karşılaştırır (insan=insan)=0
+            Console.WriteLine(string.Compare(buyuk,kucuk,true));   // Büyük harf küçük harften sayısal değer olarak büyüktür ama 3. parametre olarak true belirtirsek
+                                                                   // büyük küçük harf ayrımı yapmaz 0 yazdırır
+            Console.WriteLine(string.Compare(buyuk,0,kucuk,0,5));  // buyuk içindeki değeri küçük içindeki değer ile 0.indexten başlar kontrol eder 5. harf buyuk 
+                                                                   // olduğundan 0 yazdırır
+
+            if (tarih > tarih1)
+                Console.WriteLine("tarih2 > tarih1");
+            else if(tarih2 < tarih1)
+                Console.WriteLine("tarih2 < tarih1");
+            else if(tarih2 == tarih1)
+                Console.WriteLine("tarih2 = tarih1");
+
+            Console.WriteLine(simdi.Date);
+            Console.WriteLine(DateTime.Today);
+            Console.WriteLine(simdi.DayOfWeek+" "+(int)simdi.DayOfWeek);
+            Console.WriteLine(simdi.DayOfYear);
+            Console.WriteLine(simdi.Ticks);
+
+
+            Console.WriteLine("PI:"+Math.PI);       // .PI metodu net pi sayısını(PI:3,14159265358979) kullanarak işlem yaptırır
+            int sayi1 = 10;
+            int sayi2 = 20;
+            Console.WriteLine("Sonuç:"+(sayi1-sayi2)+", Mutlak Değer:"+Math.Abs(sayi1-sayi2)); //.Abs metodu girilen sayının mutlak değerini aldırır
+            
+            double sayi = 2.9;
+            Console.WriteLine((int)sayi);           // Aşağı yuvarlar (2)
+            
+            Console.WriteLine(Math.Floor(sayi));    //.Floor metodu taban değere yuvarlar (2)
+            Console.WriteLine(Math.Ceiling(sayi));  //.Ceiling metodu tavan değere yuvarlar (3)
+            
+            Console.WriteLine(Math.Pow(2,4));       // .Pow metodu girilen sayının  kuvvetini hesaplatır Math.Pow(2,4)=16
+            Console.WriteLine(Math.Pow(sayi1,2));   // .Math.Pow(sayi1,2)=100 sayi1 in 2.kuvvetini alır 
+            
+            Console.WriteLine(Math.Min(1,2)+"-"+Math.Max(1.1,2.2)); // .Min ve .Max metotları girilen sayının tam sayı veya ondalıklı sayı
+                                                                    // olup olmadığı farketmeksizin sayının min veya max değerini verir
+
+            double sayi3 = 12.34501;
+            double sayi4 = 98.76500;
+            Console.WriteLine(Math.Round(sayi3));       // NOT: Her rakam kendinden sonra gelen rakama göre şekillenir
+            Console.WriteLine(Math.Round(sayi4));       // gelen rakam 5 e eşit veya 5 ten büyükse kendisini bi üst rakama yuvarlar
+            Console.WriteLine(Math.Round(sayi3, 1));
+            Console.WriteLine(Math.Round(sayi4, 1));
+            Console.WriteLine(Math.Round(sayi3, 2));
+            Console.WriteLine(Math.Round(sayi4, 2));
+            
+            Console.WriteLine(Math.Sqrt(64));         // .Sqrt metodu girilen sayının karekökünü alır (8) yazdırır
+            Console.WriteLine(Math.Sqrt(63));         // (7,93725393319377) yazdırır
+            //8^(1/3)=2
+            Console.WriteLine(Math.Pow(8,1.0/3.0));
+
             Console.ReadLine();
-     
+
+            
         }
     }
 }
